@@ -49,6 +49,7 @@ export async function convertUploadedFiles(params: {
       });
 
     case ".docx":
+    case ".doc":
       return convertDocxBuffer({
         docId: params.docId,
         buffer: primary.buffer,
@@ -56,10 +57,11 @@ export async function convertUploadedFiles(params: {
         title: params.title,
         description: params.description,
         theme: params.theme,
-        docxMode: params.docxMode,
+        docxMode: ext === ".doc" ? "fidelity" : params.docxMode,
       });
 
     case ".pptx":
+    case ".ppt":
       return convertPptxBuffer({
         docId: params.docId,
         buffer: primary.buffer,

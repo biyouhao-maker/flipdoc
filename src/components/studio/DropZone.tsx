@@ -7,12 +7,14 @@ import {
   FileSpreadsheet,
   FileText,
   Loader2,
+  MessageCircle,
   Presentation,
   Sparkles,
   Upload,
 } from "lucide-react";
 import type { DocxConversionMode } from "@/lib/converters/types";
 import type { FlipDocumentPublic, PageTheme } from "@/types/document";
+import { ChatImportModal } from "./ChatImportModal";
 
 interface DropZoneProps {
   libreOfficeAvailable: boolean;
@@ -33,8 +35,9 @@ export function DropZone({ libreOfficeAvailable, disabled, onCreated }: DropZone
   const [uploading, setUploading] = useState(false);
   const [statusText, setStatusText] = useState("");
   const [error, setError] = useState("");
-  const [docxMode, setDocxMode] = useState<DocxConversionMode>("auto");
+  const [docxMode, setDocxMode] = useState<DocxConversionMode>("reflow");
   const [theme, setTheme] = useState<PageTheme>("warm-paper");
+  const [chatImportOpen, setChatImportOpen] = useState(false);
 
   const uploadFiles = async (fileList: FileList | File[]) => {
     const files = Array.from(fileList).filter((f) => f.size > 0);
@@ -118,7 +121,7 @@ export function DropZone({ libreOfficeAvailable, disabled, onCreated }: DropZone
           ref={inputRef}
           type="file"
           multiple
-          accept=".pdf,.docx,.pptx,.md,.markdown,.txt,.png,.jpg,.jpeg,.webp,.gif"
+          accept=".pdf,.docx,.doc,.pptx,.ppt,.md,.markdown,.txt,.png,.jpg,.jpeg,.webp,.gif"
           className="hidden"
           onChange={(e) => {
             if (e.target.files?.length) {
@@ -183,12 +186,31 @@ export function DropZone({ libreOfficeAvailable, disabled, onCreated }: DropZone
           </div>
 
           {!uploading && (
-            <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#1A1816] px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition group-hover:bg-[#C85A32]">
-              选择文件导入
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-2.5">
+              <span className="inline-flex items-center gap-2 rounded-full bg-[#1A1816] px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition group-hover:bg-[#C85A32]">
+                选择本地文件导入
+              </span>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setChatImportOpen(true);
+                }}
+                className="inline-flex items-center gap-1.5 rounded-full border border-[#2D5A47]/30 bg-[#F2F7F4] px-5 py-2.5 text-sm font-semibold text-[#2D5A47] transition hover:border-[#2D5A47] hover:bg-[#2D5A47] hover:text-white"
+              >
+                <MessageCircle className="h-4 w-4" />
+                从微信 / QQ 聊天导入
+              </button>
             </div>
           )}
         </div>
       </div>
+
+      <ChatImportModal
+        open={chatImportOpen}
+        onClose={() => setChatImportOpen(false)}
+        onTriggerBrowserPicker={() => inputRef.current?.click()}
+      />
 
       {/* Subtle inline conversion preferences bar */}
       <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#EAE3D6] bg-white/80 px-4 py-2.5 text-xs text-[#6C655B]">

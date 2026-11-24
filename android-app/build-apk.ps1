@@ -83,8 +83,8 @@ if ($LASTEXITCODE -ne 0) { throw "aapt2 compile failed" }
     --java "$WorkDir\gen" `
     --min-sdk-version 26 `
     --target-sdk-version 35 `
-    --version-code 1 `
-    --version-name "1.0.0" `
+    --version-code 2 `
+    --version-name "1.1.0" `
     "$WorkDir\out\res.zip"
 if ($LASTEXITCODE -ne 0) { throw "aapt2 link failed" }
 

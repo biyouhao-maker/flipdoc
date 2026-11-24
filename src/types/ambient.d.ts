@@ -75,6 +75,8 @@ interface FlipDocAndroidBridge {
   shareImageBase64: (dataUrlOrBase64: string, filename: string, title: string) => boolean;
   shareLink: (url: string, title: string, text: string) => boolean;
   openServerSettings: () => void;
+  openChatApp: (pkg: string) => boolean;
+  pickChatSavedFiles: () => void;
   getAppVersion: () => string;
 }
 
