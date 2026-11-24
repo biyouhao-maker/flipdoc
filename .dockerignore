@@ -1,0 +1,8 @@
+node_modules
+.next
+data
+android-app
+.git
+.env.local
+*.log
+*.apk

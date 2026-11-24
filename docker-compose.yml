@@ -1,0 +1,17 @@
+services:
+  flipdoc:
+    build: .
+    container_name: flipdoc
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - FLIPDOC_DATA_DIR=/app/data
+      # 部署公网时建议取消注释并填入你自己的管理口令与域名：
+      # - STUDIO_PASSCODE=your-admin-passcode
+      # - NEXT_PUBLIC_SITE_URL=https://docs.yourdomain.com
+      # - FLIPDOC_SECRET=replace-with-a-random-long-secret

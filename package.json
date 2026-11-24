@@ -1,0 +1,41 @@
+{
+  "name": "flipdoc",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -H 0.0.0.0",
+    "build": "next build",
+    "start": "next start -H 0.0.0.0",
+    "lint": "eslint",
+    "postinstall": "node scripts/sync-pdf-assets.mjs"
+  },
+  "dependencies": {
+    "highlight.js": "^11.12.0",
+    "jszip": "^3.10.2",
+    "lucide-react": "^1.78.0",
+    "mammoth": "^1.13.0",
+    "marked": "^18.2.1",
+    "next": "15.5.29",
+    "page-flip": "^2.0.7",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^6.5.438",
+    "qrcode": "^1.5.4",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "sanitize-html": "^2.18.2",
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/sanitize-html": "^2.16.2",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.29",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
