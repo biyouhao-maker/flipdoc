@@ -42,7 +42,7 @@ import java.util.List;
 
 public class MainActivity extends Activity {
     private static final String DEFAULT_SERVER_URL =
-            "https://accordance-hugo-transportation-sciences.trycloudflare.com";
+            "https://flipdoc-production.up.railway.app";
     private static final String PREFS_NAME = "flipdoc_prefs";
     private static final String KEY_SERVER_URL = "server_url";
     private static final int FILE_CHOOSER_REQ = 1001;
