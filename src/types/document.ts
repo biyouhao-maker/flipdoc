@@ -82,3 +82,13 @@ export interface SystemInfo {
   studioAuthorized: boolean;
   wechatJssdkConfigured: boolean;
 }
+
+export interface ScannedChatFile {
+  id: string;
+  name: string;
+  ext: string;
+  source: "微信" | "QQ" | "自定义目录";
+  size: number;
+  mtime: number;
+  folderHint: string;
+}

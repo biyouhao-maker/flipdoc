@@ -80,6 +80,31 @@ interface FlipDocAndroidBridge {
   getAppVersion: () => string;
 }
 
+interface FlipDocDesktopBridge {
+  isDesktop: boolean;
+  scanChatFiles: () => Promise<{
+    files: import("@/types/document").ScannedChatFile[];
+    scannedDirs: string[];
+  }>;
+  pickCustomChatFolder: () => Promise<{
+    files: import("@/types/document").ScannedChatFile[];
+    scannedDirs: string[];
+  } | null>;
+  importScannedFile: (fileId: string) => Promise<{
+    ok: boolean;
+    slug?: string;
+    error?: string;
+  }>;
+  installWindowsShortcuts: () => Promise<{
+    ok: boolean;
+    desktop: boolean;
+    sendTo: boolean;
+  }>;
+  openServerSettings: () => void;
+  getAppVersion: () => string;
+}
+
 interface Window {
   FlipDocAndroid?: FlipDocAndroidBridge;
+  FlipDocDesktop?: FlipDocDesktopBridge;
 }

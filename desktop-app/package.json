@@ -1,0 +1,39 @@
+{
+  "name": "flipdoc-desktop",
+  "productName": "FlipDoc 轻翻",
+  "version": "1.1.0",
+  "description": "FlipDoc 轻翻 Windows 桌面客户端 · 支持自动扫描电脑微信与 QQ 文件一键转翻页电子书",
+  "main": "main.js",
+  "author": "FlipDoc",
+  "scripts": {
+    "start": "electron .",
+    "dist:portable": "electron-builder --win portable --x64"
+  },
+  "build": {
+    "appId": "com.flipdoc.desktop",
+    "productName": "FlipDoc-轻翻",
+    "asar": true,
+    "files": [
+      "main.js",
+      "preload.js",
+      "scanner.js",
+      "assets/**/*"
+    ],
+    "win": {
+      "icon": "assets/icon.ico",
+      "target": [
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ]
+    },
+    "portable": {
+      "artifactName": "FlipDoc-轻翻-桌面版.exe"
+    }
+  },
+  "devDependencies": {
+    "electron": "^33.3.1",
+    "electron-builder": "^25.1.8"
+  }
+}

@@ -2,7 +2,10 @@ node_modules
 .next
 data
 android-app
+desktop-app
 .git
 .env.local
 *.log
 *.apk
+*.exe
+

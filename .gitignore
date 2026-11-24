@@ -44,6 +44,8 @@ next-env.d.ts
 # FlipDoc local data & generated PDF.js static copies (re-synced via postinstall)
 /data
 /dist
+/desktop-app/node_modules
+/desktop-app/dist
 /public/cmaps
 /public/standard_fonts
 /public/pdf.worker.min.mjs
